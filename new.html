@@ -5,21 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- <script src="js/scripts.js"></script> -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script type="text/javascript">
-function sendEmail() {
-    Email.send({
-    Host: "smtp.elasticemail.com",
-    Username: "renarddrake@gmail.com",
-    Password: "1178B7C05C040C00DF66C2C80AED1D281477",
-    To: "olamilekan1312@gmail.com",
-    From: "renarddrakeintl@gmail.com",
-    Subject : "Test email",
-    Body: "Well that was easy!!",
-    }).then((message) => alert(message));
-}
 
-// 
-       </script>
 
 
     
@@ -29,7 +15,10 @@ function sendEmail() {
     <script>
 const person1Input = $("input#subject").val();
 const person2Input = $("#phrase").val();
-
+// var js_form = document.getElementById(form_id_js);
+//         js_form.addEventListener("submit", function (e) {
+//             e.preventDefault();
+       // });
     </script>
  
 <form method="post" id="formOne">
@@ -50,8 +39,32 @@ const person2Input = $("#phrase").val();
         <input class="contactus" placeholder="Email" type="email" id="text">
     </div>
     <br /> 
-    <input type="submit" value="Send Email"   onclick="sendEmail();" />
+    <input type="submit" value="Send Email"   onclick="sendEmail(person1Input,person2Input);" />
+    
 
+    <script>
+        function sendEmail(arg,arg2) {
+            Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "renarddrake@gmail.com",
+            Password: "1178B7C05C040C00DF66C2C80AED1D281477",
+            To: "olamilekan1312@gmail.com",
+            From: "renarddrakeintl@gmail.com",
+            Subject : "testing",
+            
+            Body: "Well that was easy!!" + arg + ' ' + arg2,
+            
+            }).then((message) => alert(message));
+        
+    //         console.log(arg)
+    //         var js_form = document.getElementById("#formOne");
+    //      js_form.addEventListener("submit", function (e) {
+    //           e.preventDefault();
+    //    });
+        }
+
+        </script>
+        
 <!-- <div class="col-md-12">
         <input class="contactus" placeholder="password" type="password" name="password">
     </div>
@@ -59,7 +72,11 @@ const person2Input = $("#phrase").val();
 <!-- <div class="col-md-12">
         <input type="submit" id="js_send" value="Send" class="send_btn" />
         <button class="send_btn"  id="js_send"> Send</button> -->
-<!-- </div>
-</div>        
+<!-- </div>-->
+<!-- <a href="mailto:name@gmail.com">Click here to mail</a> -->
+<!-- <script>
+var email = document.createElement("a");
+email.href = "mailto:abc@mail.com";
+email.click()
+</script> -->
 </form>
-</html>
