@@ -5,6 +5,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- <script src="js/scripts.js"></script> -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+<!-- 
+    <script>
+        function sendEmail(arg,arg2) {
+            Email.send
+            ({
+            Host: "smtp.elasticemail.com",
+            Username: "renarddrake@gmail.com",
+            Password: "1178B7C05C040C00DF66C2C80AED1D281477",
+            To: "olamilekan1312@gmail.com",
+            From: "renarddrakeintl@gmail.com",
+            Subject : "testing",
+            
+            Body: "Well that was easy!!" + arg + ' ' + arg2,
+            
+            }).then((message) => alert(message));
+        }
+
+        </script> -->
 
 
 
@@ -12,14 +30,7 @@
   </head>
 
   <body>
-    <script>
-const person1Input = $("input#subject").val();
-const person2Input = $("#phrase").val();
-// var js_form = document.getElementById(form_id_js);
-//         js_form.addEventListener("submit", function (e) {
-//             e.preventDefault();
-       // });
-    </script>
+    
  
 <form method="post" id="formOne">
 <div class="row">
@@ -42,7 +53,18 @@ const person2Input = $("#phrase").val();
     <input type="submit" value="Send Email"   onclick="sendEmail(person1Input,person2Input);" />
     
 
+    
+            
+
+
+
     <script>
+        
+        let person1Input= document.getElementById('subject').value;
+        let person2Input= document.getElementById('phrase').value;
+               alert(person1Input);
+               alert(person2Input);
+
         function sendEmail(arg,arg2) {
             Email.send({
             Host: "smtp.elasticemail.com",
@@ -55,16 +77,12 @@ const person2Input = $("#phrase").val();
             Body: "Well that was easy!!" + arg + ' ' + arg2,
             
             }).then((message) => alert(message));
-        
-    //         console.log(arg)
-    //         var js_form = document.getElementById("#formOne");
-    //      js_form.addEventListener("submit", function (e) {
-    //           e.preventDefault();
-    //    });
         }
 
         </script>
-        
+
+
+
 <!-- <div class="col-md-12">
         <input class="contactus" placeholder="password" type="password" name="password">
     </div>
